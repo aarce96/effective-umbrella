@@ -6,15 +6,20 @@ const exphbs = require("express-handlebars");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static("public"));
 
-app.engine("hbs", exphbs({ extname: ".hbs" }));
-app.set("view engine", "hbs");
+const hbs = exphbs.create({});
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
+app.get("", (req, res) => {
+  res.render("homepage");
+});
 
 app.listen(PORT, () => {
   console.log(`🌎 Now Listening to ${PORT}`);
