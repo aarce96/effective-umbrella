@@ -21,6 +21,9 @@ app.get("", (req, res) => {
   res.render("homepage");
 });
 
+app.use(require('./controllers/'));
+
+
 Sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`🌎 Now Listening to ${PORT}`);

@@ -1,8 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
-const Sequelize = require("../config/connection");
+const sequelize = require("../config/connection");
 
-class User extends Model {};
+class User extends Model {}
 
+console.log(sequelize);
 User.init(
   {
     id: {
@@ -29,7 +30,7 @@ User.init(
     },
   },
   {
-    Sequelize,
+    sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
