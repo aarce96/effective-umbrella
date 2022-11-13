@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
 const Sequelize = require("./config/connection");
+const User = require("./models/User");
 
 require("dotenv").config();
 
@@ -18,11 +19,19 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 app.get("", (req, res) => {
-  res.render("homepage");
+  User.findAll()
+    .then((dbUserData) => {
+      console.log(dbUserData);
+      const Users = dbUserData.map((v) => v.dataValues);
+      res.render("homepage", { Users });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-app.use(require('./controllers/'));
-
+app.use(require("./controllers/"));
 
 Sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
