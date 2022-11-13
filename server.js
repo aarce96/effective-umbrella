@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 // const mysql = require("mysql");
 const exphbs = require("express-handlebars");
+const Sequelize = require("./config/connection");
 
 require("dotenv").config();
 
@@ -21,6 +22,8 @@ app.get("", (req, res) => {
   res.render("homepage");
 });
 
-app.listen(PORT, () => {
-  console.log(`🌎 Now Listening to ${PORT}`);
+Sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`🌎 Now Listening to ${PORT}`);
+  });
 });
