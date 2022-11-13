@@ -3,7 +3,9 @@ const sequelize = require("../config/connection");
 
 class User extends Model {}
 
-console.log(sequelize);
+// Debugger;
+// console.log(sequelize);
+
 User.init(
   {
     id: {
