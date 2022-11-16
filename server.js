@@ -9,14 +9,28 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3003;
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// const session = require("express-session");
+// const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-app.use(express.static("public"));
+// const sess = {
+//   secret: "Super secret secret",
+//   cookie: {},
+//   resave: false,
+//   saveUninitialized: true,
+//   store: new SequelizeStore({
+//     db: Sequelize,
+//   }),
+// };
+
+// app.use(session(sess));
 
 const hbs = exphbs.create({});
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static("public"));
 
 app.get("", (req, res) => {
   User.findAll()

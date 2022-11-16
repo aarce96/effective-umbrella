@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const Login = require("./Login");
 
 class User extends Model {}
 
@@ -30,6 +31,13 @@ User.init(
         isEmail: true,
       },
     },
+    // login_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'login',
+    //     key: 'id'
+    //   }
+    // }
   },
   {
     sequelize,
