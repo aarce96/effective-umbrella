@@ -51,6 +51,7 @@ In the root terminal, enter the following command to run file:
 npm start
 ```
 <br>
+
 ## Built With
 
 * Node.js and Express.js to create a RESTful API.
@@ -66,3 +67,7 @@ https://github.com/aarce96/effective-umbrella
 <br>
 
 ## Video link
+
+(this video helps illustraste the web application and its purpose.)
+
+https://drive.google.com/file/d/1F_PFEDqo_ZwpVugt1fHRslJgsOkoYR2E/view
